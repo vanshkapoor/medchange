@@ -1,0 +1,22 @@
+.head{
+    margin:30px 100px;
+}
+.head2{
+    padding-top: 50px;
+    font-size: x-large;
+    font-weight: 500
+}
+
+.Mbutton{
+    margin: 60px 100px;
+}
+.Mbutton a{
+    background-color: springgreen;
+    padding: 10px 30px;
+    border-radius: 24px;
+    color: white;
+}
+
+.Mbutton a:hover{
+    text-decoration: none;
+}

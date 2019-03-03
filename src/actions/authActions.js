@@ -42,7 +42,7 @@ export const loginUser = userdata => dispatch =>{
        }
    }
 
-   axios.post('/api/auth/login',userdata,config)
+   axios.post('http://206.189.133.177/api/auth/login',userdata,config)
    .then(res =>{
        dispatch({
            type:LOGIN_SUCCESS,
@@ -76,7 +76,7 @@ export const loadUser = () =>(dispatch, getState ) =>{
         config.headers['Authorization'] = `Token ${token}`;
     }
 
-    axios.get('/api/auth/user',config)
+    axios.get('http://206.189.133.177/api/auth/user',config)
     .then(res =>{
         dispatch({
             type:USER_LOADED,
@@ -109,7 +109,7 @@ export const logout = () =>( dispatch, getState) =>{
         config.headers['Authorization'] = `Token ${token}`;
     }
 
-    axios.post('/api/auth/logout',null,config)
+    axios.post('http://206.189.133.177/api/auth/logout',null,config)
     .then(res =>{
         dispatch({
             type:LOGOUT_SUCCESS,
@@ -127,7 +127,7 @@ export const register = (userdata) => (dispatch) => {
         }
     }
  
-    axios.post('/api/auth/register',userdata,config)
+    axios.post('http://206.189.133.177/api/auth/register',userdata,config)
     .then(res =>{
         dispatch({
             type:REGISTER_SUCCESS,

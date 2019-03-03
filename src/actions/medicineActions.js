@@ -39,7 +39,7 @@ export const getMedicines = () => (dispatch,getState) =>{
         config.headers["Authorization"] = `Token ${token}`;
     }
 
-    axios.get('/api/medicineofuser', config)
+    axios.get('http://206.189.133.177/api/medicineofuser', config)
         .then(res =>{
             dispatch({
                 type:GET_MEDICINES,
@@ -68,7 +68,7 @@ export const deleteMedicine = (id) => (dispatch,getState) =>{
     }
 
 
-    axios.delete(`/api/medicineofuser/${id}`,config)
+    axios.delete(`http://206.189.133.177/api/medicineofuser/${id}`,config)
         .then(res =>{
             dispatch({
                 type:DELETE_MEDICINE,

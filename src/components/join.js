@@ -11,22 +11,20 @@ class join extends Component {
     return (
       <div>
           <div className="userbox">
-            <img src={uimage} />
+            <img src={uimage} alt="user"/>
             <a className="btn btn-lg btn-info" href="/ulogin">LOGIN</a>
             <a className ="btn btn-lg btn-info" href="/uregister">REGISTER</a>
-
           </div>
+          
           <div className="userbox">
-          <img src={pimage} />
-            <a></a>
-            <a></a>
-
+          <img src={pimage} alt="chemist" />
+          <a className="btn btn-lg btn-info" href="/chemist/login">LOGIN</a>
+          <a className ="btn btn-lg btn-info" href="/chemist/register">REGISTER</a>
           </div>
-          <div className="userbox">
-          <img src={himage} />
-            <a></a>
-            <a></a>
 
+          <div className="userbox" >
+          <img src={himage} alt="hospital"/>
+            
           </div>
         
       </div>

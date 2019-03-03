@@ -1,7 +1,7 @@
 import { GET_MEDICINES, DELETE_MEDICINE,ADD_MEDICINE } from '../actions/types';
 
 const initialState = {  
-    medicines:[]
+    medicines:[ ]
 
 }
 
@@ -9,7 +9,8 @@ export default function(state = initialState,action){
     switch(action.type){
         case GET_MEDICINES:
             return{
-                ...state
+                ...state,
+                medicines:action.payload
             };
         case DELETE_MEDICINE:
             return{
@@ -25,6 +26,5 @@ export default function(state = initialState,action){
         }
         default:
             return state;
-
     }
 }

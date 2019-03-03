@@ -1,4 +1,4 @@
-import { TEST_DISPATCH,LOGIN_SUCCESS,LOGIN_FAIL,USER_LOADED,
+import { LOGIN_SUCCESS,LOGIN_FAIL,USER_LOADED,
         USER_LOADING,AUTH_ERROR,LOGOUT_SUCCESS,REGISTER_FAIL,REGISTER_SUCCESS } 
         from './types';
 import axios from 'axios';
@@ -141,6 +141,25 @@ export const register = (userdata) => (dispatch) => {
     })
 
 };
+
+//sends to the medicineaction
+export const tokenConfig = getState => {
+
+    const token = getState().auth.token;
+  
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+  
+    if (token) {
+      config.headers["Authorization"] = `Token ${token}`;
+    }
+  
+    return config;
+  };
+  
 
 
 

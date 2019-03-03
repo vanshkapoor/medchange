@@ -7,9 +7,12 @@ import  { addMedicine } from '../../actions/medicineActions';
 
 class form extends Component {
   state ={
-    credit:"",
-    expiry:"",
-    quantity:"",
+    expiryDate:"",
+    quantityOfMedicine:"",
+    medicine:"",
+    
+
+
   };
 static propTypes = {
   addMedicine:PropTypes.func.isRequired
@@ -32,7 +35,7 @@ static propTypes = {
     return (
       <div>
         <div className="card card-body mt-4 mb-4">
-          <h2>Add Lead</h2>
+          <h2>Add MEDICINES</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Expiry</label>
@@ -64,9 +67,32 @@ static propTypes = {
                 value={this.state.quantity}
               />
             </div>
+            
+            <div className="form-group">
+              <label>quantity</label>
+              <textarea
+                className="form-control"
+                type="text"
+                name="message"
+                onChange={this.onChange}
+                value={this.state.quantity}
+              />
+            </div>
+            
+            <div className="form-group">
+              <label>quantity</label>
+              <textarea
+                className="form-control"
+                type="text"
+                name="message"
+                onChange={this.onChange}
+                value={this.state.quantity}
+              />
+            </div>
+
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-                Submit
+                ADD
               </button>
             </div>
           </form>

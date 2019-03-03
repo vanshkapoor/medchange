@@ -1,24 +1,25 @@
-import React,{ Fragment ,Component} from 'react';
+import React,{ Component} from 'react';
 import { Redirect } from "react-router-dom";
-import Form from './form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import  { getMedicines, deleteMedicine } from '../../actions/medicineActions';
+import  { getMedicines, deleteMedicine ,requestmedicines} from '../../actions/medicineActions';
 
 
 class dashboard extends Component{
 
     
 static propTypes = {
-    medicines: PropTypes.array.isRequired,
+    medicines: PropTypes.object.isRequired,
     getMedicines: PropTypes.func.isRequired,
     deleteMedicine: PropTypes.func.isRequired,
+    requestmedicines:PropTypes.func.isRequired,
     auth:PropTypes.object.isRequired
 };
 
   
 componentDidMount(){
     this.props.getMedicines();
+    console.log(this.props.medicines);
 }
 
 
@@ -27,10 +28,8 @@ componentDidMount(){
         return <Redirect to= "/ulogin" />;
       }
         return(
-            <div>
-                <Fragment>
                 <div>
-                    <h2>Leads</h2>
+                    <h2>MEDICINES</h2>
                     <table className="table table-dark">
                     <thead>
                         <tr>
@@ -38,12 +37,15 @@ componentDidMount(){
                         <th scope="col">credit for medicine</th>
                         <th scope="col">Expiry</th>
                         <th scope="col">quantity</th>
+                        <th scope="col">delete </th>
+                        <th scope="col">request</th>
                         </tr>
                     </thead>
                     <tbody>
                         
-                        {this.props.medicines.map(medicine => (
+                        {this.props.medicines.medicines.map(medicine => (
                             <tr key={medicine.id}>
+                            <td>{medicine.id}</td>
                             <td>{medicine.creditForMedicine}</td>
                             <td>{medicine.expiryDate}</td>
                             <td>{medicine.quantityOfMedicine}</td>
@@ -56,14 +58,22 @@ componentDidMount(){
                                 Delete
                                 </button>
                             </td>
+                            <td>
+                                <button
+                                onClick={this.props.requestmedicines.bind(this, medicine.id)}
+                                className="btn btn-success btn-sm"
+                                >
+                                {" "}
+                                Request
+                                </button>
+                            </td>
+
                             </tr>
                         ))}
 
                     </tbody>
                     </table>
                 </div>
-                </Fragment>
-            </div>
     )
 }
 }
@@ -71,9 +81,9 @@ componentDidMount(){
 
 
 const mapStateToProps = state => ({
-    medicines:state.medicines.medicines,
+    medicines:state.medicines,
     auth:state.auth
   }) 
   
 
-export default connect(mapStateToProps ,{ getMedicines,deleteMedicine })(dashboard);
+export default connect(mapStateToProps ,{ getMedicines,deleteMedicine,requestmedicines })(dashboard);

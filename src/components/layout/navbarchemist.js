@@ -2,24 +2,25 @@ import React, { Component } from 'react'
 import './navbar.css';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import {logout} from '../../actions/authActions';
+import {logout} from '../../actions/chemistauthActions';
 
 //import {Link} from 'react-router-dom';
 
 
 
 
-class navbar extends Component {
+class navbarchemist extends Component {
 
   static propTypes = {
-    auth:PropTypes.object.isRequired,
+    chemist:PropTypes.object.isRequired,
     logout:PropTypes.func.isRequired
   }
 
 
   render() {
 
-    const { isAuthenticated , user } = this.props.auth;
+    const { isAuthenticated } = this.props.chemist;
+    const user = this.props.chemist.chemuser;
 
     const guestlinks = (
 
@@ -35,12 +36,12 @@ class navbar extends Component {
     const userlinks = (
         <ul className="navul">
           
-          <li className="navli"><button onClick = {this.props.logout} href="/ulogin">Logout</button></li>      
-          <li className="navli"><a  href="#home">Dashboard</a></li>
+          <li className="navli"><button onClick = {this.props.logout} href="/chemist/login">Logout</button></li>      
+          <li className="navli"><a  href="/chemist/dashboard">Dashboard</a></li>
           <li className="navli"><a href="/profile">Profile</a></li>
           <li className="navli">
           <strong>
-            { user ? `welcome ${user.username}`:"" }
+            { user ? `welcome ${user}` :"" }
           </strong>
         </li>
         
@@ -55,7 +56,7 @@ class navbar extends Component {
   }
 };
 const mapStateToProps =state =>({
-  auth:state.auth
+  chemist:state.chemist
 })
 
-export default connect(mapStateToProps,{logout})(navbar);
+export default connect(mapStateToProps,{logout})(navbarchemist);

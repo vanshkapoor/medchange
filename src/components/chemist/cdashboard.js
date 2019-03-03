@@ -11,7 +11,8 @@ class cdashboard extends Component {
   static propTypes = {
     chemist:PropTypes.object.isRequired,
     logout:PropTypes.func.isRequired,
-    requests:PropTypes.func.isRequired
+    requests:PropTypes.func.isRequired,
+    chemmedicines:PropTypes.object.isRequired
   }
 
   componentDidMount (){
@@ -34,33 +35,36 @@ class cdashboard extends Component {
                         <th scope="col">Id</th>
                         <th scope="col">Medicine Name</th>
                         <th scope="col">Expiry Date</th>
+                        <th scope="col">quantity</th>
                         <th scope="col">Credits</th>
                         <th scope="col">Accept</th>
                         <th scope="col">Reject</th>
                         </tr>
+                        <tr></tr>
                     </thead>
                     <tbody>
-                        
-                        {this.props.chemmedicines.chemmeds.request.map(medicine => (
-                            <tr key={medicine.id}>
-                            <td>{medicine.medicine__name}</td>
-                            <td>{medicine.expiryDate}</td>
-                            <td>{medicine.creditForMedicine}</td>
-                            <td>
-                                <button
-                                >
-                                Delete
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                >
-                                Request
-                                </button>
-                            </td>
+                         
+                         {/* { this.props.chemmedicines.chemmeds.req.map(medicine => (
+                             <tr key={medicine.id}>
+                             <td>{medicine.quantityOfMedicine}</td>
+                             <td>{medicine.medicine__name}</td>
+                             <td>{medicine.expiryDate}</td>
+                             <td>{medicine.creditForMedicine}</td>
+                             <td>
+                                 <button
+                                 >
+                                 Delete
+                                 </button>
+                             </td>
+                             <td>
+                                 <button
+                                 >
+                                 Request
+                                 </button>
+                             </td>
 
-                            </tr>
-                        ))}
+                             </tr>
+                         ))}  */}
 
                     </tbody>
                     </table>
